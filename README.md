@@ -1,0 +1,1 @@
+# SatoshiYamazaki.github.io
