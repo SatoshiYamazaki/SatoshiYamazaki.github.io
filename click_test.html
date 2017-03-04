@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>写真サイズ変更</title>
+		<style>
+		  svg {
+				width: 1000px;
+				height: 600px;
+				border: 1px solid black;
+			}
+			/*#myGraph rect {
+				stroke : rgb( 160, 0, 0 );
+				stroke-width : 100px;
+				fill : rgb( 255, 0, 0 );
+			}*/
+		</style>
+		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	</head>
+	<body>
+		<h1>写真サイズ変更</h1>
+		<svg id="myGraph"></svg>
+		<script>
+		var dataSet = [100, 130, 5, 60, 240];
+    var clicked = 0;
+		var xlength = 500;
+		var ylength = 300;
+		var zoomrate = 2;
+
+		// zoomビヘイビアの設定
+		var zoom = d3.behavior.zoom()
+		  .scaleExtent([0.1, 10])
+		  .on("zoom", function(){
+		    container.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+		  });
+
+		// SVG を zoom ビヘイビアに渡す
+		// var svg = d3.select("#MyGraph")
+		//   .attr("width", width)
+		//   .attr("height", height)
+		//   .append("g")
+		//   .attr("transform", "translate(0,0)")
+		//   .call(zoom);
+
+		// var container = svg.append("g");
+
+		// pointer-events = all でマウスイベントをSVGの描画範囲全体で拾うよう設定
+		// var svg = svg.append("rect")
+		// //   .attr("width", width)
+		//   .attr("height", height)
+		//   .style("fill", "none")
+		//   .style("pointer-events", "all");
+		// データにもとづいて描画する
+		// var image = svg
+		var svg = d3.select("#myGraph")	// SVG要素を指定
+		// container.append("g")
+			.selectAll("image").data([100])
+			.enter().append("image")
+			.attr("class", "bar")	// CSSクラスを追加
+			.attr("xlink:href", "img/change_ph01.jpg")
+			.attr("x", 0)
+			.attr("y", 0)
+			.attr("width", xlength)
+			.attr("height", ylength)
+			.
+			.on("click", function(){
+				if(clicked==0){
+					clicked = 1;
+					d3.select(this)	// クリックされた要素を指定
+						.attr("width", xlength)	// 塗りのスタイルを水色にする
+						.attr("height", ylength)
+						.transition()
+						.duration(1000)
+						.attr("width", zoomrate * xlength)	// 塗りのスタイルを水色にする
+						.attr("height", zoomrate * ylength)
+				}
+				else{
+					clicked = 0;
+					d3.select(this)	// クリックされた要素を指定
+						.attr("width", zoomrate * xlength)	// 塗りのスタイルを水色にする
+						.attr("height", zoomrate * ylength)
+						.transition()
+						.duration(1000)
+						.attr("width", xlength)	// 塗りのスタイルを水色にする
+						.attr("height", ylength)
+				}
+			})
+// 			d3.behavior.zoom(svg)
+// 				.scaleExtent([0.1, 10])
+// 		  	.on("zoom", function(){
+// 		    	container.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+// 		  	});
+//
+// 				var svg = d3.select("#MyGraph");
+//
+// // SVG に circle 要素を追加
+// var circle = svg.append("circle")
+//   .attr({
+//     "cx" : 10,
+//     "cy" : 10,
+//     "r" : 10,
+//     "fill-opacity" : 0.8,
+//     "fill" : "orange"
+//   });
+
+// // ドラッグビヘイビアを準備
+// var drag = d3.behavior.drag()
+//   .on("drag", function(d){
+//     d3.select(this)
+//       .attr({
+//         "cx" : d3.event.x,
+//         "cy" : d3.event.y
+//       })
+//   });
+//
+// // circle 要素をドラッグビヘイビアに渡す
+// circle.call(drag);
+			// .call(zoom);
+		</script>
+	</body>
+</html>
