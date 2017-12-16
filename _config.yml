@@ -22,13 +22,15 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  SatoshiYamazaki
 
 # Build settings
-markdown: redcarpet
-redcarpet:
-  extensions: ["autolink", "hard_wrap"]
-# markdown: kramdown
-theme: minima
+# markdown: redcarpet
+# redcarpet:
+#   extensions: ["autolink", "hard_wrap"]
+markdown: kramdown
+# theme: minima
 gems:
   - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-last-modified-at
 exclude:
   - Gemfile
   - Gemfile.lock
