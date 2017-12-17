@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 .DS_Store
 _site/
 .bundle/
 .sass-cache/
 Gemfile.lock
 vendor/
+=======
+_site
+.sass-cache
+.jekyll-metadata
+>>>>>>> e2a8f0dfd0923ae4abbe6e02d0a74178fa9ab8d9
