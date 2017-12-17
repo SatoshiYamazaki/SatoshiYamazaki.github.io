@@ -6,7 +6,7 @@ order: 1
 share: false
 ---
 
-### WORK EXPRIENCE
+### WORK EXPERIENCE
 - NEC Asia Pacific Pte Ltd, NEC Laboratories Singapore, Researcher (2018.6-).
 - NEC Central Research Laboratories, Researcher (2014.4-2017.5).
 
