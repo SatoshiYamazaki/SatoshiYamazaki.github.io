@@ -3,13 +3,13 @@
 #
 # url: http://localhost:4000
 # baseurl: ""
-url: http://ttskch.github.io
-baseurl: /jekyll-ttskch-theme
-title: Your name
-description: Some descriptions of yourself.
-avatar: /assets/img/ogp.png
+url: http://SatoshiYamazaki.github.io
+baseurl: ""
+title: Satoshi Yamazaki's Web Page
+description: This web page is all about Satoshi Yamazaki.
+avatar: /assets/img/satoshi.jpg
 # favicon: /favicon.ico
-favicon: /assets/img/ogp.png
+favicon: 
 # language: ja
 language: en
 
@@ -19,16 +19,16 @@ language: en
 icons:
   rss: true
   email:
-  github: ttskch
+  github: SatoshiYamazaki
   bitbucket:
-  twitter: ttskch
+  twitter: 
   facebook:
   google_plus:
   tumblr:
   behance:
   dribbble:
   flickr:
-  instagram:
+  instagram: s_yamapan
   linkedin: # full URL
   pinterest:
   reddit:
@@ -62,7 +62,7 @@ str_show_all_posts: Show all posts
 #
 # Recent posts.
 #
-recent_posts_num: 10
+recent_posts_num: 3
 
 #
 # Pagination.
@@ -78,7 +78,7 @@ share_buttons:
   facebook: false # needs ogp.fb.app_id
   hatena: false
 ogp:
-  image_url: //ttskch.github.io/jekyll-ttskch-theme/assets/img/ogp.png
+  image_url: 
   fb:
     admin: # facebook admin id
     app_id: # facebook application id
