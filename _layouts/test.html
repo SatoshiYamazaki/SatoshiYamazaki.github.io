@@ -5,6 +5,10 @@ layout: default
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r120/three.min.js"></script>
 <script src="/assets/js/threejs_test.js"></script>
 
+<!-- tfjs -->
+<script src="http://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+<script src="http://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"> </script>
+
 <div class="article-wrapper">
     <article>
         {% include article-header.html page=page link=false share=page.share %}
@@ -13,14 +17,75 @@ layout: default
         </section>
         {% include article-footer.html page=page share=page.share %}
     </article>
-    <div class="image-sample">
-        <img src="/assets/img/satoshi.jpg" width=480 alt="satoshi"  title="Image test">
+    <div class="sy-images">
+        <h2 id="image-sample"> Image samples</h2>
+        <h3 id="show-image"> show an image</h3>
+        <img id="satoshi" src="/assets/img/satoshi.jpg" width=480 alt="satoshi"  title="Image test">
     </div>
-    <div class="three-canvas">
-    <!-- refer to https://github.com/ics-creative/170116_three_lesson/blob/master/lesson_1/index.html -->
-    <canvas id="myCanvas"></canvas>
+    <div class="sy-three">
+        <h2 id="three-sample"> Three.js samples</h2>
+        <!-- refer to https://github.com/ics-creative/170116_three_lesson/blob/master/lesson_1/index.html -->
+        <div>
+            <h3 id="rotateing-box"> Rotating box</h3>
+            <a url="https://github.com/ics-creative/170116_three_lesson/blob/master/lesson_1/index.html">Sample from ICS
+                Media (Japanese)</a>
+        </div>
+        <div>
+            <canvas id="myCanvas"></canvas>
+        </div>
+    </div>
+    <div class="sy-tfjs-detect">
+        <h2 id="tfjs-detect-sample"> Tensorflow.js samples</h2>
+        <!-- refer to https://note.com/npaka/n/n998dda854f49 -->
+        <div>
+            <h3 id="detect"> Detect person</h3>
+        </div>
+        <div>
+            <canvas id="tfjs-detect-canvas"></canvas>
+            <!-- <img id="target" src="/assets/img/satoshi.jpg" width=480 alt="satoshi"  title="Image test"> -->
+        </div>
     </div>
 </div>
+
+<script>
+    const drawBBox = (ctx, bbox, name) => {
+        // 枠の描画
+        ctx.strokeStyle = 'red'
+        ctx.fillStyle = 'red'
+        ctx.strokeRect(bbox[0], bbox[1], bbox[2], bbox[3])
+        ctx.fillRect(bbox[0], bbox[1] , bbox[2], 20)
+
+        // 名前の描画
+        ctx.fillStyle = "white"
+        ctx.font = 'bold 20px sans-serif'
+        ctx.textAlign = "left"
+        ctx.textBaseline = "top"
+        ctx.fillText(name, bbox[0] + 8, bbox[1], bbox[2])
+    }
+
+    var canvas = document.getElementById('tfjs-detect-canvas');
+    var ctx = canvas.getContext('2d');
+    var img = new Image();
+    img.src = "/assets/img/satoshi.jpg";
+    img.onload = function () {
+        canvas.width = img.width
+        canvas.height = img.height
+        ctx.drawImage(img, 0, 0);
+        img.style.display = 'none';
+    };
+
+    // モデルの読み込み
+    cocoSsd.load().then(model => {
+      // 物体検出
+      model.detect(img).then(predictions => {
+        console.log('Predictions: ', predictions);
+        for (let i = 0; i < predictions.length; i++) {
+          drawBBox(ctx, predictions[i].bbox, predictions[i].class)
+        }
+      });
+    });
+
+</script>
 
 {% if site.disqus %}
 <section class="comments">

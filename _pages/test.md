@@ -1,10 +1,7 @@
 ---
 layout: test
-title: Test
+title: JavaScript Artifacts
 permalink: /test/
 order: 1
 share: false
 ---
-
-### test
-test
