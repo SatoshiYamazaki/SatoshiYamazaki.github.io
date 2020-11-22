@@ -1,0 +1,29 @@
+---
+layout: default
+---
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r120/three.min.js"></script>
+<script src="/assets/js/threejs_test.js"></script>
+
+<div class="article-wrapper">
+    <article>
+        {% include article-header.html page=page link=false share=page.share %}
+        <section class="post-content">
+            {{ content }}
+        </section>
+        {% include article-footer.html page=page share=page.share %}
+    </article>
+    <div class="image-sample">
+        <img src="/assets/img/satoshi.jpg" width=480 alt="satoshi"  title="Image test">
+    </div>
+    <div class="three-canvas">
+    <!-- refer to https://github.com/ics-creative/170116_three_lesson/blob/master/lesson_1/index.html -->
+    <canvas id="myCanvas"></canvas>
+    </div>
+</div>
+
+{% if site.disqus %}
+<section class="comments">
+    {% include disqus.html %}
+</section>
+{% endif %}
