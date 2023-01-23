@@ -5,7 +5,7 @@ permalink: /picture_book/
 order: 1
 share: false
 ---
-updated: 2023/01/17
+updated: 2023/01/23
 
 # (Japanese) Bird Picture Book
 日本の鳥図鑑
